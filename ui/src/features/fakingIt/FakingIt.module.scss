@@ -1,0 +1,52 @@
+.selectionBoxesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.selectionBox {
+    color: #4a4a4a;
+    box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+    padding: 1.25rem;
+    border-radius: 6px;
+
+    margin: 12px;
+}
+
+.selectionName {
+    font-weight: bold;
+    font-size: 110%;
+    margin-bottom: 5px;
+}
+
+.tagContainer {
+    display: flex;
+    gap: 5px;
+}
+
+.selectionTag {
+    color: white;
+    border-radius: 3px;
+    padding: 1px 4px;
+}
+
+.inputForm {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    gap: 2px;
+}
+
+.inputBox {
+    max-width: 125px;
+}
+
+.errorWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.errorText {
+    color: red;
+    font-size: 80%;
+}

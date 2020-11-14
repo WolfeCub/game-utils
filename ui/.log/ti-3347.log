@@ -1,0 +1,20 @@
+[9:6:6.680] Global cache location '/home/wolfe/.cache/typescript/4.0', safe file path '/home/wolfe/dotfiles/emacs/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/typingSafeList.json', types map path /home/wolfe/dotfiles/emacs/.emacs.d/.cache/lsp/npm/typescript/lib/node_modules/typescript/lib/typesMap.json
+[9:6:6.681] Processing cache location '/home/wolfe/.cache/typescript/4.0'
+[9:6:6.682] Trying to find '/home/wolfe/.cache/typescript/4.0/package.json'...
+[9:6:6.682] Loaded content of '/home/wolfe/.cache/typescript/4.0/package.json': {"private":true,"dependencies":{"types-registry":"^0.1.514"}}
+[9:6:6.683] Loaded content of '/home/wolfe/.cache/typescript/4.0/package-lock.json'
+[9:6:6.683] Finished processing cache location '/home/wolfe/.cache/typescript/4.0'
+[9:6:6.683] Process id: 3354
+[9:6:6.683] NPM location: /nix/store/iv6jnpjv1fsr71vmi2fv9xpkhhg628bm-nodejs-14.14.0/bin/npm (explicit '--npmLocation' not  provided)
+[9:6:6.683] validateDefaultNpmLocation: false
+[9:6:6.683] Npm config file: /home/wolfe/.cache/typescript/4.0/package.json
+[9:6:6.683] Updating types-registry npm package...
+[9:6:6.683] Exec: /nix/store/iv6jnpjv1fsr71vmi2fv9xpkhhg628bm-nodejs-14.14.0/bin/npm install --ignore-scripts types-registry@latest
+[9:6:7.562]     Succeeded. stdout:
+    + types-registry@0.1.514
+    updated 1 package and audited 1 package in 0.412s
+found 0 vulnerabilities
+
+
+[9:6:7.563] Updated types-registry npm package
+[13:26:25.825] Parent process has exited, shutting down...
