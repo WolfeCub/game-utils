@@ -1,12 +1,12 @@
 import { configureStore, ThunkAction, Action, current } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from 'react-redux';
-import counterReducer from '../features/counter/counterSlice';
 import currentRoomSlice from './currentRoomSlice';
+import modalSlice from './modalSlice';
 
 export const store = configureStore({
     reducer: {
-        counter: counterReducer,
-        currentRoom: currentRoomSlice
+        currentRoom: currentRoomSlice,
+        modal: modalSlice
     },
 });
 

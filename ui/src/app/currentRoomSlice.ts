@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface CurrentRoomState {
-    userName: string;
     state: ServerState;
 }
 
@@ -25,7 +24,6 @@ interface Player {
 }
 
 const initialState: CurrentRoomState = {
-    userName: '',
     state: {
         roomId: '',
         roomMode: FakingItMode.Pointing,
@@ -38,9 +36,6 @@ export const currentRoomSlice = createSlice({
     name: 'currentRoom',
     initialState,
     reducers: {
-        setRoomJoined: (state, action: PayloadAction<{userName: string; roomId: string}>) => {
-            state.userName = action.payload.userName;
-        },
         setGameState: (state, action: PayloadAction<ServerState>) => {
             state.state = action.payload;
         },
@@ -48,6 +43,6 @@ export const currentRoomSlice = createSlice({
 });
 
 
-export const { setRoomJoined, setGameState } = currentRoomSlice.actions;
+export const { setGameState } = currentRoomSlice.actions;
 
 export default currentRoomSlice.reducer;

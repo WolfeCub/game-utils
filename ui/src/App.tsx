@@ -5,8 +5,7 @@ import { useSelector } from './app/store';
 import { FakingItRoot } from './features/fakingIt/FakingItRoot';
 import { useDispatch } from 'react-redux';
 import { setGameState } from './app/currentRoomSlice';
-import { useParams } from 'react-router-dom';
-import { AppRouteParams } from './Router';
+import { openModal } from './app/modalSlice';
 
 const signalrEndpoint = 'https://localhost:5001/hub/fakingIt';
 
@@ -22,9 +21,7 @@ const App: FC<{}> = () => {
 
     const [conn, setConn] = useState<HubConnection | null>(null);
 
-    const [showTaken, setShowTaken] = useState(false);
-
-    const userName = useSelector(o => o.currentRoom.userName);
+    const roomId = useSelector(o => o.currentRoom.state.roomId);
 
     useEffect(() => {
         (async () => {
@@ -32,8 +29,7 @@ const App: FC<{}> = () => {
 
             connection.on('UpdateState', (content) => dispatch(setGameState(content)));
             connection.on('UsernameTaken', () => {
-                setShowTaken(true);
-                setTimeout(() => setShowTaken(false), 3000);
+                dispatch(openModal('Username is already taken!', 'is-danger'));
             });
 
             setConn(connection);
@@ -43,13 +39,30 @@ const App: FC<{}> = () => {
     if (conn === null) return null;
 
     return (
-        <Connection.Provider value={conn}>
-            {userName === ''
-            ? <Register nameTaken={showTaken} />
-            : <FakingItRoot />
-            }
+        <>
+            <Modal />
+            <Connection.Provider value={conn}>
+                {roomId === ''
+                ? <Register />
+                : <FakingItRoot />
+                }
 
-        </Connection.Provider>
+            </Connection.Provider>
+        </>
+    );
+}
+
+const Modal: FC<{}> = () => {
+    const modal = useSelector(o => o.modal);
+
+    console.log(modal);
+    if (!modal.show) return null;
+
+    return (
+        <div className={`notification ${modal.mode}`}
+             style={{position: 'absolute', top: '10px', right: '10px', zIndex: 100}}>
+            {modal.text}
+        </div>
     );
 }
 
