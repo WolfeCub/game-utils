@@ -24,6 +24,8 @@ const App: FC<{}> = () => {
 
     const [showTaken, setShowTaken] = useState(false);
 
+    const userName = useSelector(o => o.currentRoom.userName);
+
     useEffect(() => {
         (async () => {
             await connection.start();
@@ -42,7 +44,11 @@ const App: FC<{}> = () => {
 
     return (
         <Connection.Provider value={conn}>
-            <Register nameTaken={showTaken} />
+            {userName === ''
+            ? <Register nameTaken={showTaken} />
+            : <FakingItRoot />
+            }
+
         </Connection.Provider>
     );
 }

@@ -6,6 +6,7 @@ import { Connection } from '../../App';
 import { setRoomJoined } from '../../app/currentRoomSlice';
 import { AppRouteParams } from '../../Router';
 import Style from './Register.module.scss';
+import { CreateGame } from './CreateGame';
 
 interface Props {
     nameTaken: boolean;
@@ -24,6 +25,10 @@ export const Register: FC<Props> = ({nameTaken}) => {
     const submit = async (form: FormValues) => {
         await connection.send('Join', form.userName, roomId);
         dispatch(setRoomJoined({userName: form.userName, roomId: roomId}));
+    }
+
+    if (!roomId) {
+        return <CreateGame />;
     }
 
     return (
