@@ -31,14 +31,14 @@ export const FakingItHandsUp: FC<{}> = () => {
                             </div>
                     )})}
                 </div>
-                <div className={Style.inputForm}>
-                    <button className="button is-info" onClick={createSubmit("Up")}>
-                        Up
-                    </button>
-                    <button className="button is-danger" onClick={createSubmit("Down")}>
-                        Down
-                    </button>
-                </div>
+            </div>
+            <div className='bottomCentered' style={{display: 'flex', gap: '3px'}}>
+                <button className="button is-info" onClick={createSubmit("Up")}>
+                    Up
+                </button>
+                <button className="button is-danger" onClick={createSubmit("Down")}>
+                    Down
+                </button>
             </div>
         </>
     );

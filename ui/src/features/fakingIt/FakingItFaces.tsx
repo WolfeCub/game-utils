@@ -8,6 +8,8 @@ interface Form {
     face: string;
 }
 
+const emojis = ['🙂', '😳', '😓', '🤣', '😍', '😭', '😮', '😡', '😐', '🤮', '😱'];
+
 export const FakingItFaces: FC<{}> = () => {
     const { members, currentSelection } = useSelector(o => o.currentRoom.state);
 
@@ -15,15 +17,13 @@ export const FakingItFaces: FC<{}> = () => {
 
     const selections = currentSelection;
 
-    const { handleSubmit, register, errors } = useForm();
-
-    const submit = async ({face}: Form) => {
+    const submit = async (face: string | undefined) => {
         await connection.send('MakeSelection', face);
     }
 
     return (
         <>
-            <div className="centeredContainer" style={{width: '65%'}}>
+            <div className='centeredContainer' style={{width: '65%'}}>
                 <div className={Style.selectionBoxesContainer}>
                     {members.map(player => (
                         <div key={player.name} className={Style.selectionBox}>
@@ -34,27 +34,15 @@ export const FakingItFaces: FC<{}> = () => {
                         </div>
                     ))}
                 </div>
-                <form className={Style.inputForm} onSubmit={handleSubmit(submit)}>
-                    <input type="text" name="face" className={`input ${Style.inputBox}`}
-                           ref={register({
-                               required: "Required",
-                               pattern: {
-                                   value: /^(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c[\ud000-\udfff]|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])$/i,
-                                   message: "Must be a single emoji"
-                               }
-                           })}
-                    />
-                    <button className="button is-primary" type="submit">
-                        Submit
-                    </button>
-                </form>
-                { errors.face &&
-                  <div className={Style.errorWrapper}>
-                      <div className={Style.errorText}>
-                          {errors.face.message}
-                      </div>
-                  </div>
-                }
+            </div>
+            <div className='bottomCentered'>
+                {emojis.map(o => (
+                    <span className='noSelect'
+                          style={{fontSize: '200%'}}
+                          onClick={() => submit(o)}>
+                        {o}
+                    </span>
+                ))}
             </div>
         </>
     );

@@ -12,11 +12,16 @@ interface FormValues {
 
 export const Register: FC<{}> = () => {
     const connection = useContext(Connection);
-    const { handleSubmit, register, errors } = useForm();
+    const { handleSubmit, register, errors } = useForm({
+        defaultValues: {
+            userName: localStorage.getItem('previousUserName') || ''
+        }
+    });
     const { roomId } = useParams<AppRouteParams>();
 
     const submit = async (form: FormValues) => {
         await connection.send('Join', form.userName, roomId);
+        localStorage.setItem('previousUserName', form.userName);
     }
 
     if (!roomId) {

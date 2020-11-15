@@ -22,7 +22,7 @@ export const FakingItPointing: FC<{}> = () => {
                 <div key={player.name} className={Style.selectionBox}
                      onClick={async () => await connection.send('MakeSelection', player.name)}
                 >
-                    <div className={Style.selectionName}>{player.name}</div>
+                    <div className={`noSelect ${Style.selectionName}`}>{player.name}</div>
                     <div className={Style.tagContainer}>
                         {selections[player.name] && selections[player.name].map((selection) => {
                             const color = members.find((p) => p.name === selection)?.color;

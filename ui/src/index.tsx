@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bulma/bulma.sass';
-import './index.css';
+import './index.scss';
 import { Router } from './Router';
 import { store } from './app/store';
 import { Provider } from 'react-redux';

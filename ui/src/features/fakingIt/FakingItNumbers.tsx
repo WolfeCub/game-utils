@@ -19,9 +19,10 @@ export const FakingItNumbers: FC<{}> = () => {
 
     const findColor = (name: string) => members.find((p) => p.name === name)?.color;
 
+    console.log(errors);
     return (
         <>
-            <div className="centeredContainer" style={{width: '65%'}}>
+            <div className='centeredContainer' style={{width: '65%'}}>
                 <div className={Style.selectionBoxesContainer}>
                     {members.map(player => (
                         <div key={player.name} className={Style.selectionBox}>
@@ -34,13 +35,22 @@ export const FakingItNumbers: FC<{}> = () => {
                         </div>
                     ))}
                 </div>
-                <form className={Style.inputForm} onSubmit={handleSubmit(submit)}>
-                    <input type="number" name="number" className={`input ${Style.inputBox}`}
-                           ref={register({required: "Required"})}
+            </div>
+            <div className='bottomCentered'>
+                <form onSubmit={handleSubmit(submit)}>
+                    <input type='number' name='number' className={`input ${Style.inputBox}`}
+                           ref={register({required: 'Required', min: 0, max: 10})}
                     />
-                    <button className="button is-primary" type="submit">
+                    <button className='button is-primary' type='submit'>
                         Submit
                     </button>
+                    { errors.number &&
+                      <div className={Style.errorText}>
+                          {errors.number.message === ''
+                          ? 'Number must be between 0 and 10'
+                          : errors.number.message}
+                      </div>
+                    }
                 </form>
             </div>
         </>

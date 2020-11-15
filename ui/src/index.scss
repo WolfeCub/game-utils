@@ -1,0 +1,26 @@
+.centeredContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bottomCentered {
+    position: absolute;
+    left: 50%;
+    bottom: 25%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @media only screen and (max-width: 1024px) {
+        bottom: 3%;
+        width: 80%;
+    }
+}
+
+.noSelect {
+    user-select: none;
+}
