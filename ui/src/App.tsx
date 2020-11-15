@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setGameState } from './app/currentRoomSlice';
 import { openModal } from './app/modalSlice';
 
-const signalrEndpoint = 'https://localhost:5001/hub/fakingIt';
+const signalrEndpoint = `${process.env.REACT_APP_SERVER_URL}/hub/fakingIt`;
 
 const connection = new HubConnectionBuilder()
     .withUrl(signalrEndpoint)

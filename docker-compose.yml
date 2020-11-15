@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  api:
+    build: ./api
+    ports:
+    - 80:8080
+    environment:
+    - CORS_ORIGINS=https://jb.joshwolfe.ca
+  ui:
+    build: ./ui
+    ports:
+    - 80:80
+    environment:
+    - REACT_APP_SERVER_URL=https://api.jb.joshwolfe.ca
