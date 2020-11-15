@@ -32,7 +32,7 @@ namespace GameUtils
         {
             services.AddCors(options =>
                 options.AddDefaultPolicy(builder =>
-                    builder.WithOrigins("http://localhost:3000", "https://localhost:3000")
+                    builder.WithOrigins(Environment.GetEnvironmentVariable("CORS_ORIGINS"))
                            .AllowAnyMethod()
                            .AllowAnyHeader()
                            .AllowCredentials()

@@ -18,6 +18,6 @@ namespace GameUtils.Models
         public Dictionary<string, string> CurrentSelection = new Dictionary<string, string>();
 
         [JsonIgnore]
-        public Queue<string> ColorsAvailable = new Queue<string>(new[] { "blue", "green", "yellow" });
+        public Queue<string> ColorsAvailable = new Queue<string>(new[] { "blue", "green", "yellow", "purple", "green", "aqua", "maroon", "lime" });
     }
 }
