@@ -770,7 +770,6 @@ export const pokemon = [
     'sandygast',
     'palossand',
     'pyukumuku',
-    'type: null',
     'silvally',
     'minior',
     'komala',
